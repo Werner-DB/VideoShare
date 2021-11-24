@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://137.194.157.53:4000";
+import Ext_Message from "../components/extmessage";
+const ENDPOINT = "http://localhost:4000";
 
-function Socket() {
-  const [response, setResponse] = useState("");
-
+function MsgList() {
+  const [messages, setMessages]=useState();
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
     socket.on("init", data => {
-      setResponse(data.message);
+      console.log(data.body);
+      setMessages(prevId=> prevId=data.body.map((elt)=>{return (Ext_Message(elt))}));
     });
   }, []);
 
   return (
-    <p>
-      {response}
-    </p>
+    <div>
+      
+      <ul>{messages}</ul>
+      
+    </div>
   );
 }
 
-export default Socket;
+export default MsgList;
