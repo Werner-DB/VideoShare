@@ -16,7 +16,7 @@ io.on('connection' , (socket) => {
   });
   
   //socket.broadcast.emit("hello", "world");
-  socket.emit("init", {body : [{message:"Hello World",sender:"Mac McMaggan",time:"20h05"},{message:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id liberoermentum vulputate",sender: "Damian Danay",time:"18h36"}]});
+  socket.emit("init", {body : [{message:"Hello World",sender:"Mac McMaggan",time:"20h05",state:true},{message:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id liberoermentum vulputate",sender: "Damian Danay",time:"18h36",state:false}]});
 
 
 })
